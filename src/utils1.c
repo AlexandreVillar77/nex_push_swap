@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:13:43 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 11:15:45 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/08 16:04:19 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,32 @@ void	init_swap(t_swap *swap, int *a, int size)
 	swap->asize = size;
 	swap->aini_size = size;
 	swap->bini_size = swap->aini_size / 2;
-	swap->chunk = NULL;
+	swap->bchunk = NULL;
+	swap->achunk = NULL;
 }
 
-t_swap	parse(char *str)
+t_swap	*parse(char *str)
 {
 	int		*res;
 	int		i;
 	char	**tab;
-	t_swap	swap;
+	t_swap	*swap;
 
 	i = 0;
 	tab = ft_split(str, ' ');
 	res = malloc(sizeof(int) * (ft_tablen(tab)));
+	swap = malloc(sizeof(t_swap));
+	if (!res || !swap)
+		return (NULL);
 	while (tab[i])
 	{
 		res[i] = ft_atoi(tab[i]);
 		i++;
 	}
-	init_swap(&swap, res, ft_tablen(tab));
+	init_swap(swap, res, ft_tablen(tab));
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
 	free(tab);
 	return (swap);
 }

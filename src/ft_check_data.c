@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:04:55 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 12:06:41 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/08 15:09:09 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_max(int *tab, int size)
 
 	max = tab[0];
 	i = 0;
-	while (i < size)
+	while (i < size && tab[i])
 	{
 		if (max < tab[i])
 			max = tab[i];

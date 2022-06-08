@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:52:47 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 12:18:34 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/08 15:32:04 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_swap{
 		int			bsize;
 		int			bini_size;
 		int			aini_size;
-		t_chunk		*chunk;
+		t_chunk		*bchunk;
+		t_chunk		*achunk;
 }					t_swap;
 
 typedef struct s_split{
@@ -78,7 +79,7 @@ void	rrr(t_swap *swap);
 int	ft_atoi(const char *str);
 void    init_split(t_split *split, const char *s, char c);
 int	ft_tablen(char **tab);
-t_swap	parse(char *str);
+t_swap	*parse(char *str);
 void	init_swap(t_swap *swap, int *a, int size);
 
 //utils2.c
@@ -96,6 +97,7 @@ int	is_sorted(int *tab, int size);
 int	is_rev_sorted(int *tab, int size);
 int	next_isrevsort(int *tab, int size);
 int	next_issorted(int *tab, int size);
+int	*f_sorta(t_swap *swap);
 
 //ft_struct.c
 t_chunk	*ft_lstnew(int min, int max, int size);
@@ -119,7 +121,14 @@ int	ft_hereis(int *tab, int max, int size);
 int		ft_hereismore(int *tab, int max, int size);
 void	move_morethan(t_swap *swap, int mid);
 void	ft_size2(t_swap *swap);
-void	chunk_pb(t_swap *swap);
+void	chunk_pa(t_swap *swap);
 int	*f_sortb(t_swap *swap);
+
+//a_chunk.c
+void	move_lessthan(t_swap *swap, int mid);
+void	move_lessthan2(t_swap *swap, int mid);
+void	chunk_pb(t_swap *swap);
+void	new_achunk(t_swap *swap, int max, int size);
+void	ft_size2a(t_swap *swap);
 
 #endif

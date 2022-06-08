@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:30:52 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 11:46:01 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/08 13:07:29 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	new_chunk(t_swap *swap, int max, int size)
 		perror("Malloc error\n");
 		exit(EXIT_FAILURE);
 	}
-	ft_lstadd_front(&swap->chunk, new);
+	ft_lstadd_front(&swap->bchunk, new);
 }
 
 void	ft_printfchunk(t_chunk *chunk)
@@ -45,7 +45,7 @@ void	ft_printflst(t_swap *swap)
 {
 	t_chunk	*tmp;
 
-	tmp = swap->chunk;
+	tmp = swap->bchunk;
 	while (tmp)
 	{
 		ft_printfchunk(tmp);

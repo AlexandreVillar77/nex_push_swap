@@ -6,7 +6,7 @@
 #    By: avillar <avillar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 12:50:52 by avillar           #+#    #+#              #
-#    Updated: 2022/06/08 12:19:03 by avillar          ###   ########.fr        #
+#    Updated: 2022/06/08 16:21:51 by avillar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =		push_swap.c			\
 			ft_struct_utils.c	\
 			ft_check_data.c		\
 			b_chunk.c			\
+			a_chunk.c			\
 
 CFLAG = -Wall -Wextra -Werror
 
@@ -41,7 +42,7 @@ all: ft_printf/libprintf.a ${NAME}
 	$(CC) $(CFLAG) -Ift_printf -c -I/include/includes.h $< -o $@
 
 ${NAME}: ${OBJS}
-	${CC} ${OBJS} -Lft_printf -lprintf -o $(NAME)
+	${CC} ${OBJS} ${FSAN} -Lft_printf -lprintf -o $(NAME)
 
 ft_printf/libprintf.a:
 	make -C ft_printf
