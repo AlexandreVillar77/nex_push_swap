@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 08:48:41 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 11:26:01 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 15:22:56 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	b_to_a(t_swap *swap)
 		return ;
 	else if (swap->bchunk)
 	{
-			ft_printf("size = %d\n", swap->bsize);
-
 		if (is_rev_sorted(swap->b, swap->bchunk->size) == 0)
 			chunk_pa(swap);
 		else if (swap->bchunk->size <= 2)
@@ -35,11 +33,10 @@ void	b_to_a(t_swap *swap)
 
 void	a_to_b(t_swap *swap)
 {
-	if (is_sorted(swap->a, swap->asize) == 0)
+	if (is_sorted(swap->a, swap->asize) == 0 || !swap->achunk)
 		return ;
 	if (swap->achunk)
 	{
-		ft_printf("here\n");
 		if (is_sorted(swap->a, swap->achunk->size) == 0
 			&& is_sorted(swap->a, swap->asize == 1))
 		{
@@ -48,10 +45,11 @@ void	a_to_b(t_swap *swap)
 		else if (swap->achunk->size <= 2)
 			ft_size2a(swap);
 		else if (swap->achunk->size > 0)
+		{
 			move_lessthan2(swap, f_sorta(swap));
+		}
 		else
 		{
-
 			ft_lstdel_first(&swap->achunk);
 		}
 		a_to_b(swap);
@@ -79,25 +77,23 @@ void	algo1(t_swap *swap)
 		if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
 			sa(swap);
 	}
+	ft_printfblst(swap);
 	b_to_a(swap);
-	while (is_sorted(swap->a, swap->asize) == 1)
+	ft_printfalst(swap);
+	i = 0;
+	while (i < swap->asize)
 	{
+		ft_printf("a -> %d\n", swap->a[i]);
 		i++;
-		if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
-			sa(swap);
+	}
+	while (is_sorted(swap->a, swap->asize) == 1 || swap->bsize > 0)
+	{
+		//ft_printf("test\nt\n");
+		i++;
 		a_to_b(swap);
 		if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
 			sa(swap);
 		b_to_a(swap);
-		if (i == 6)
-		{
-			i = 0;
-			while (i < swap->asize)
-			{
-				ft_printf("a -> %d\n", swap->a[i]);
-				i++;
-			}
-		}
 	}
 	ft_lstclear(&swap->bchunk);
 	ft_lstclear(&swap->achunk);
@@ -105,16 +101,13 @@ void	algo1(t_swap *swap)
 
 
 
-
-
-
 ////////////////////////////////////////////////////////////////////////
-	i = 0;
+	/*i = 0;
 	while (i < swap->asize)
 	{
 		ft_printf("a -> %d\n", swap->a[i]);
 		i++;
-	}
+	}*/
 }
 
 int	main(int argc, char **argv)

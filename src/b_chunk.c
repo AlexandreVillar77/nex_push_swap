@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:18 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 11:15:58 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 14:45:11 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	move_morethan(t_swap *swap, int mid)
 			x++;
 			pa(swap);
 			swap->bchunk->size--;
-			while (i > 0)
+			while (i > 0 && swap->bsize > 1)
 			{
 				i--;
 				rrb(swap);
@@ -86,18 +86,18 @@ int	f_sortb(t_swap *swap)
 	int	i;
 	int rtn;
 
+	i = 0;
 	fact = ft_numtabcpy(swap->b, swap->bchunk->size);
 	if (!fact)
 		return (0);
-	while (is_sorted(fact, swap->bchunk->size) == 1)
+	while (i < swap->bchunk->size - 1 && is_sorted(fact, swap->bchunk->size) == 1)
 	{
-		i = 0;
-		while (i < swap->bchunk->size - 1)
+		if (fact[i] > fact[i + 1])
 		{
-			if (fact[i] > fact[i + 1])
-				ft_swap(&(fact[i]), &(fact[i + 1]));
-			i++;
+			ft_swap(&(fact[i]), &(fact[i + 1]));
+			i = 0;
 		}
+		i++;
 	}
 	rtn = (catchmid(fact, swap->bchunk->size));
 	if (fact)

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:52:47 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 10:18:05 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 15:20:53 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <ft_printf.h>
+# include "../ft_printf/ft_printf.h"
 # include <stdlib.h>
 
 typedef struct	s_chunk	{
@@ -111,7 +111,8 @@ void	ft_lstclear(t_chunk **lst);
 //ft_struct_utils.c
 void	ft_printfchunk(t_chunk *chunk);
 void	new_chunk(t_swap *swap, int max, int size);
-void	ft_printflst(t_swap *swap);
+void	ft_printfblst(t_swap *swap);
+void	ft_printfalst(t_swap *swap);
 void	ft_lstdel_first(t_chunk **alst);
 
 //ft_check_data.c

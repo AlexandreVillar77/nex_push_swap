@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:11:24 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 09:43:16 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 14:32:51 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	f_sorta(t_swap *swap)
 	int	rtn;
 
 	fact = ft_numtabcpy(swap->a, swap->achunk->size);
+	i = 0;
 	if (!fact)
 		return (0);
-	while (is_sorted(fact, swap->achunk->size) == 1)
+	while (is_sorted(fact, swap->achunk->size) == 1 && i < swap->achunk->size - 1)
 	{
-		i = 0;
-		while (i < swap->achunk->size - 1)
-		{
-			if (fact[i] > fact[i + 1])
-				ft_swap(&(fact[i]), &(fact[i + 1]));
-			i++;
+		if (fact[i] > fact[i + 1])
+		{	
+			ft_swap(&(fact[i]), &(fact[i + 1]));
+			i = 0;
 		}
+		i++;
 	}
 	rtn = catchmid(fact, swap->achunk->size);
 	if (fact)
