@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:13:43 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 16:04:19 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 10:19:02 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_swap	*parse(char *str)
 	swap = malloc(sizeof(t_swap));
 	if (!res || !swap)
 		return (NULL);
+	if (check_max(tab) == 1)
+		return (NULL);
 	while (tab[i])
 	{
 		res[i] = ft_atoi(tab[i]);
@@ -68,9 +70,9 @@ void	init_split(t_split *split, const char *s, char c)
 	split->len = 0;
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
-	long int		rtn;
+	long long int		rtn;
 	int				nb;
 
 	rtn = 0;
@@ -88,5 +90,6 @@ int	ft_atoi(const char *str)
 		rtn += *str - 48;
 		str++;
 	}
-	return (rtn * nb);
+	rtn = rtn * nb;
+	return (rtn);
 }

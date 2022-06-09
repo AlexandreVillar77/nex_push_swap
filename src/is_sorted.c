@@ -6,16 +6,17 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:11:24 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 15:53:24 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 09:43:16 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-int	*f_sorta(t_swap *swap)
+int	f_sorta(t_swap *swap)
 {
 	int	*fact;
 	int	i;
+	int	rtn;
 
 	fact = ft_numtabcpy(swap->a, swap->achunk->size);
 	if (!fact)
@@ -30,7 +31,10 @@ int	*f_sorta(t_swap *swap)
 			i++;
 		}
 	}
-	return (fact);
+	rtn = catchmid(fact, swap->achunk->size);
+	if (fact)
+		free(fact);
+	return (rtn);
 }
 
 int	is_sorted(int *tab, int size)

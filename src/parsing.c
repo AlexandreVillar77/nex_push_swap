@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:25:50 by avillar           #+#    #+#             */
-/*   Updated: 2022/04/04 15:20:42 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 10:22:42 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ int	parse_check(char *str)
 	{
 		if ((str[i] > '9' || str[i] < '0') && str[i] != '-' && str[i] != ' '
 			&& str[i] != '+')
-		{
-			ft_printf("Error1\n");
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -56,12 +53,25 @@ int	parse_nodup(t_swap *swap)
 		while (x < swap->asize)
 		{
 			if (swap->a[i] == swap->a[x])
-			{
-				ft_printf("Error2 num : %d is dup.\n", swap->a[i]);
 				return (1);
-			}
 			x++;
 		}
+		i++;
+	}
+	return (0);
+}
+
+int	check_max(char **str)
+{
+	int	i;
+	long long int m;
+
+	i = 0;
+	while (str[i])
+	{
+		m = ft_atoi(str[i]);
+		if (m > 2147483647 || m < -2147483648)
+			return (1);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:04:55 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 15:09:09 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 10:42:43 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_hereis(int *tab, int max, int size)
 	int	i;
 
 	i = -1;
-	while (++i < size)
+	while (++i < size && tab[i])
 		if (tab[i] < max)
 			return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:18 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 15:14:50 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 11:15:58 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ void	move_morethan(t_swap *swap, int mid)
 		&& swap->bchunk)
 
 	{
-		ft_printf("i = %d\n", i);
-		ft_printf("mid = %d\n", mid);
-		ft_printf("size = %d\n", swap->bchunk->size);
 		if (swap->b[0] > mid)
 		{
 			x++;
@@ -75,7 +72,7 @@ void	ft_size2(t_swap *swap)
 
 void	chunk_pa(t_swap *swap)
 {
-	while (swap->bchunk->size > 0)
+	while (swap->bchunk->size > 0 && swap->bsize > 0)
 	{
 		pa(swap);
 		swap->bchunk->size--;
@@ -83,10 +80,11 @@ void	chunk_pa(t_swap *swap)
 	ft_lstdel_first(&swap->bchunk);
 }
 
-int	*f_sortb(t_swap *swap)
+int	f_sortb(t_swap *swap)
 {
 	int	*fact;
 	int	i;
+	int rtn;
 
 	fact = ft_numtabcpy(swap->b, swap->bchunk->size);
 	if (!fact)
@@ -101,5 +99,8 @@ int	*f_sortb(t_swap *swap)
 			i++;
 		}
 	}
-	return (fact);
+	rtn = (catchmid(fact, swap->bchunk->size));
+	if (fact)
+		free(fact);
+	return (rtn);
 }

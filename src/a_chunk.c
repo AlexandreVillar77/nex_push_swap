@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:08:40 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 14:15:27 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 11:25:09 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	new_achunk(t_swap *swap, int max, int size)
 {
 	t_chunk	*new;
 
+	ft_printf("chnk_size = %d\n", size);
 	new = ft_lstnew(find_min(swap->a, size), max, size);
 	if (!new)
 	{
@@ -32,7 +33,6 @@ void	move_lessthan(t_swap *swap, int mid)
 	i = 0;
 	while (ft_hereis(swap->a, mid, swap->asize) == 0)
 	{
-		ft_printf("mid: %d\n", mid);
 		if (swap->a[0] < mid)
 		{
 			i++;
@@ -64,16 +64,21 @@ void	move_lessthan2(t_swap *swap, int mid)
 {
 	int	i;
 	int	x;
+	int	t;
 
 	i = 0;
-	while (ft_hereis(swap->a, mid, swap->achunk->size) == 0)
+	t = 0;
+	while (ft_hereis(swap->a, mid, swap->achunk->size) == 0
+		&& swap->a[0])
 	{
+		t++;
 		if (swap->a[0] < mid)
 		{
 			x++;
+			ft_printf("swap->asize = %d, mid = %d\n", swap->asize, mid);
 			pa(swap);
 			swap->achunk->size--;
-			while (i > 0)
+			while (i > 0 && swap->asize > 1)
 			{
 				i--;
 				rra(swap);
@@ -85,14 +90,6 @@ void	move_lessthan2(t_swap *swap, int mid)
 			ra(swap);
 		}
 	}
-	/*ft_printf("mid: %d\n", mid);
-	ft_printf("size = %d\n", swap->achunk->size);
-	static int	y = 0;
-	while (y < swap->achunk->size)
-	{
-		ft_printf("a -> %d\n", swap->a[y]);
-		y++;
-	}*/
 	new_chunk(swap, find_max(swap->b, x), x);
 }
 

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:52:47 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 15:32:04 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 10:18:05 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	**ft_split(char const *s, char c);
 int	parse_check(char *str);
 int	parse_nodup(t_swap *swap);
 int	ft_newsize(t_swap *swap, char c);
+int	check_max(char **str);
 
 //ft_swap1.c
 void	sa(t_swap *swap);
@@ -76,7 +77,7 @@ void	rrb(t_swap *swap);
 void	rrr(t_swap *swap);
 
 //fichier utils1.c
-int	ft_atoi(const char *str);
+long int	ft_atoi(const char *str);
 void    init_split(t_split *split, const char *s, char c);
 int	ft_tablen(char **tab);
 t_swap	*parse(char *str);
@@ -85,19 +86,20 @@ void	init_swap(t_swap *swap, int *a, int size);
 //utils2.c
 int	*remalloc(int *src, int	nsize, int bsize);
 void	ft_swap(int	*a, int *b);
-int	*fact_sort(int *tab, int size);
+int	fact_sort(int *tab, int size);
 
 //utils3.c
 int	*ft_numtabcpy(int *src, int size);
 int	catchmid(int *tab, int size);
 int	find_min(int *x, int size);
+void	free_swap(t_swap *swap);
 
 //is_sorted.c
 int	is_sorted(int *tab, int size);
 int	is_rev_sorted(int *tab, int size);
 int	next_isrevsort(int *tab, int size);
 int	next_issorted(int *tab, int size);
-int	*f_sorta(t_swap *swap);
+int	f_sorta(t_swap *swap);
 
 //ft_struct.c
 t_chunk	*ft_lstnew(int min, int max, int size);
@@ -122,7 +124,7 @@ int		ft_hereismore(int *tab, int max, int size);
 void	move_morethan(t_swap *swap, int mid);
 void	ft_size2(t_swap *swap);
 void	chunk_pa(t_swap *swap);
-int	*f_sortb(t_swap *swap);
+int	f_sortb(t_swap *swap);
 
 //a_chunk.c
 void	move_lessthan(t_swap *swap, int mid);

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:06:17 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 15:56:45 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 09:54:23 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	*ft_numtabcpy(int *src, int size)
 		dst[i] = src[i];
 		i++;
 	}
-	//free(src);
+	//if (src)
+		//free(src);
 	return (dst);
 }
 
@@ -52,4 +53,14 @@ int	find_min(int *x, int size)
 		i++;
 	}
 	return (min);
+}
+
+void	free_swap(t_swap *swap)
+{
+	if (swap->a)
+		free(swap->a);
+	if (swap->b)
+		free(swap->b);
+	if (swap)
+		free(swap);
 }

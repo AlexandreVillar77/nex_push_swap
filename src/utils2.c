@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:21:42 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/08 15:25:02 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/09 11:12:25 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*remalloc(int *src, int nsize, int bsize)
 	int	*new;
 
 	i = 0;
-	new = malloc(sizeof(int) * (nsize ));
+	new = malloc(sizeof(int) * (nsize));
 	if (!new)
 		return (new);
 	while (i < nsize && i < bsize && src[i])
@@ -26,7 +26,8 @@ int	*remalloc(int *src, int nsize, int bsize)
 		new[i] = src[i];
 		i++;
 	}
-	free(src);
+	if (src)
+		free(src);
 	return (new);
 }
 
@@ -41,10 +42,11 @@ void	ft_swap(int	*a, int *b)
 	*b = s;
 }
 
-int	*fact_sort(int *tab, int size)
+int	fact_sort(int *tab, int size)
 {
 	int	*fact;
 	int	i;
+	int	rtn;
 
 	fact = ft_numtabcpy(tab, size);
 	if (!fact)
@@ -59,5 +61,8 @@ int	*fact_sort(int *tab, int size)
 			i++;
 		}
 	}
-	return (fact);
+	rtn = catchmid(fact, size);
+	if (fact)
+		free(fact);
+	return (rtn);
 }
