@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:26:10 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 11:11:25 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/13 10:37:09 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	pup_a(t_swap *swap)
 	int	s;
 	int	s2;
 
-	i = swap->asize;
+	i = swap->asize - 1;
 	s = swap->a[i];
 	while (i > 0)
 	{
@@ -69,7 +69,7 @@ void	pup_b(t_swap *swap)
 	int	s;
 	int	s2;
 
-	i = swap->bsize;
+	i = swap->bsize - 1;
 	s = swap->b[i];
 	while (i > 0)
 	{

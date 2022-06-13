@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:21:42 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 11:12:25 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/13 10:31:43 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*remalloc(int *src, int nsize, int bsize)
 	int	*new;
 
 	i = 0;
-	new = malloc(sizeof(int) * (nsize));
+	new = malloc(sizeof(int) * (nsize + 1));
 	if (!new)
 		return (new);
 	while (i < nsize && i < bsize && src[i])

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:08:40 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 14:52:30 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/13 13:44:02 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,11 @@ void	move_lessthan(t_swap *swap, int mid)
 			rra(swap);
 			pb(swap);
 		}
-		else
-			ra(swap);
-		/*else if (find_nearest(swap, mid) == 0)
+		else if (find_nearest(swap, mid) == 0)
 			ra(swap);
 		else
 			rra(swap);
-		x = 0;
-			while (x < swap->asize)
-			{
-				ft_printf("a -> %d\n", swap->a[x]);
-				x++;
-			}*/
+		
 	}
 	new_chunk(swap, find_max(swap->b, i), i);
 }
@@ -74,11 +67,10 @@ void	move_lessthan2(t_swap *swap, int mid)
 			x++;
 			pb(swap);
 			swap->achunk->size--;
-			while (i > 0 && swap->asize > 1)
-			{
-				i--;
+			while (i-- > 0 && swap->asize > swap->achunk->size && swap->achunk->size > 0)
 				rra(swap);
-			}
+			i = 0;
+			ft_update_chunk(swap->a, swap->achunk);
 		}
 		else
 		{
@@ -86,12 +78,15 @@ void	move_lessthan2(t_swap *swap, int mid)
 			ra(swap);
 		}
 	}
+	//ft_printf("pb - > i = %d\n", i );
 	new_chunk(swap, find_max(swap->b, x), x);
-	ft_printfchunk(swap->achunk);
 }
 
 void	ft_size2a(t_swap *swap)
 {
+	int	x;
+
+	x = swap->achunk->size;
 	if (swap->achunk->size == 1)
 		pb(swap);
 	else
@@ -101,6 +96,7 @@ void	ft_size2a(t_swap *swap)
 		pb(swap);
 		pb(swap);
 	}
+	new_chunk(swap, find_max(swap->b, x), x);
 	ft_lstdel_first(&swap->achunk);
 }
 

@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 08:48:41 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 15:22:56 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/13 15:50:43 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ void	a_to_b(t_swap *swap)
 		{
 			move_lessthan2(swap, f_sorta(swap));
 		}
-		else
-		{
-			ft_lstdel_first(&swap->achunk);
-		}
 		a_to_b(swap);
 	}
 }
@@ -74,26 +70,41 @@ void	algo1(t_swap *swap)
 	{
 		mid = fact_sort(swap->a, swap->asize);
 		move_lessthan(swap, mid);
-		if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
+	}
+	if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
 			sa(swap);
-	}
-	ft_printfblst(swap);
 	b_to_a(swap);
-	ft_printfalst(swap);
 	i = 0;
-	while (i < swap->asize)
-	{
-		ft_printf("a -> %d\n", swap->a[i]);
-		i++;
-	}
 	while (is_sorted(swap->a, swap->asize) == 1 || swap->bsize > 0)
 	{
-		//ft_printf("test\nt\n");
 		i++;
 		a_to_b(swap);
+		if (!swap->achunk && !swap->bchunk)
+		{
+			mid = fact_sort(swap->a, swap->asize);
+			move_lessthan(swap, mid);
+		}
 		if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
 			sa(swap);
 		b_to_a(swap);
+		if (i == 50)
+		{
+
+			i = 0;
+			while (i < swap->asize)
+			{
+				ft_printf("a -> %d\n", swap->a[i]);
+				i++;
+			}
+			i = 0;
+			while (i < swap->bsize)
+			{
+				ft_printf("b -> %d\n", swap->b[i]);
+				i++;
+			}
+			i = 51;
+			//break ;
+		}
 	}
 	ft_lstclear(&swap->bchunk);
 	ft_lstclear(&swap->achunk);
@@ -102,12 +113,12 @@ void	algo1(t_swap *swap)
 
 
 ////////////////////////////////////////////////////////////////////////
-	/*i = 0;
+	i = 0;
 	while (i < swap->asize)
 	{
 		ft_printf("a -> %d\n", swap->a[i]);
 		i++;
-	}*/
+	}
 }
 
 int	main(int argc, char **argv)
