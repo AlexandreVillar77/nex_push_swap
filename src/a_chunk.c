@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:08:40 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/13 13:44:02 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/14 13:43:35 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,6 @@ void	move_lessthan2(t_swap *swap, int mid)
 			x++;
 			pb(swap);
 			swap->achunk->size--;
-			while (i-- > 0 && swap->asize > swap->achunk->size && swap->achunk->size > 0)
-				rra(swap);
-			i = 0;
-			ft_update_chunk(swap->a, swap->achunk);
 		}
 		else
 		{
@@ -78,7 +74,9 @@ void	move_lessthan2(t_swap *swap, int mid)
 			ra(swap);
 		}
 	}
-	//ft_printf("pb - > i = %d\n", i );
+	while (i-- > 0 && swap->asize > swap->achunk->size && swap->achunk->size > 0)
+		rra(swap);
+	ft_update_chunk(swap->a, swap->achunk);
 	new_chunk(swap, find_max(swap->b, x), x);
 }
 
@@ -102,10 +100,14 @@ void	ft_size2a(t_swap *swap)
 
 void	chunk_pb(t_swap *swap)
 {
+	int	x;
+
+	x = swap->achunk->size;
 	while (swap->achunk->size > 0)
 	{
 		pb(swap);
 		swap->achunk->size--;
 	}
+	new_chunk(swap, find_max(swap->b, x), x);
 	ft_lstdel_first(&swap->achunk);
 }

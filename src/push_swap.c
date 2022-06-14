@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 08:48:41 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/13 15:50:43 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/14 13:43:03 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	b_to_a(t_swap *swap)
 
 void	a_to_b(t_swap *swap)
 {
-	if (is_sorted(swap->a, swap->asize) == 0 || !swap->achunk)
-		return ;
-	if (swap->achunk)
+	while (swap->achunk)
 	{
+		if (is_sorted(swap->a, swap->asize) == 0 || !swap->achunk)
+			return ;
 		if (is_sorted(swap->a, swap->achunk->size) == 0
 			&& is_sorted(swap->a, swap->asize == 1))
 		{
@@ -61,11 +61,11 @@ void	push_b_toa(t_swap *swap)
 void	algo1(t_swap *swap)
 {
 	int	mid;
-	int	i;
+	int	y;
 
-	i = 0;
-	i++;
-	i--;
+	y = 0;
+	y++;
+	y--;
 	while (swap->asize > 2)
 	{
 		mid = fact_sort(swap->a, swap->asize);
@@ -74,51 +74,16 @@ void	algo1(t_swap *swap)
 	if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
 			sa(swap);
 	b_to_a(swap);
-	i = 0;
 	while (is_sorted(swap->a, swap->asize) == 1 || swap->bsize > 0)
 	{
-		i++;
 		a_to_b(swap);
-		if (!swap->achunk && !swap->bchunk)
-		{
-			mid = fact_sort(swap->a, swap->asize);
-			move_lessthan(swap, mid);
-		}
 		if (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1)
 			sa(swap);
 		b_to_a(swap);
-		if (i == 50)
-		{
 
-			i = 0;
-			while (i < swap->asize)
-			{
-				ft_printf("a -> %d\n", swap->a[i]);
-				i++;
-			}
-			i = 0;
-			while (i < swap->bsize)
-			{
-				ft_printf("b -> %d\n", swap->b[i]);
-				i++;
-			}
-			i = 51;
-			//break ;
-		}
 	}
 	ft_lstclear(&swap->bchunk);
 	ft_lstclear(&swap->achunk);
-
-
-
-
-////////////////////////////////////////////////////////////////////////
-	i = 0;
-	while (i < swap->asize)
-	{
-		ft_printf("a -> %d\n", swap->a[i]);
-		i++;
-	}
 }
 
 int	main(int argc, char **argv)

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   ft_opti_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 11:08:52 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/14 11:40:17 by avillar          ###   ########.fr       */
+/*   Created: 2022/06/14 11:38:52 by avillar           #+#    #+#             */
+/*   Updated: 2022/06/14 12:29:30 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-void	sort_3a(t_swap *swap)
+void	s_to_ss(t_swap *swap, int num)
 {
-	if (is_rev_sorted(swap->a, swap->asize))
+	if (swap->asize > 1 && swap->bsize > 1)
 	{
-		sa(swap);
-		rra(swap);
+		if ((swap->bchunk->size > 1 && swap->b[0] < swap->b[1])
+			&& swap->achunk->size > 1 && swap->a[0] > swap->a[1])
+			ss(swap);
+		else if ((swap->bchunk->size == 2 && swap->b[0] < swap->b[1])
+			&& (swap->asize == 2 && is_sorted(swap->a, swap->asize) == 1))
+			ss(swap);
 	}
-	if (swap->a[0] > swap->a[1] && swap->a[0] < swap->a[2]
-		&& swap->a[1] < swap->a[2])
+	else if (num == 0)
 		sa(swap);
-	if (swap->a[0] > swap->a[1] && swap->a[0] > swap->a[2]
-		&& swap->a[1] < swap->a[2])
-		ra(swap);
-	if (swap->a[2] < swap->a[0] && swap->a[1] > swap->a[0])
-		rra(swap);
+	else if (num == 1)
+		sb(swap);
 }

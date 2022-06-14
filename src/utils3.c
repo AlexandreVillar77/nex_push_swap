@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:06:17 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 09:54:23 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/14 09:14:49 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	*ft_numtabcpy(int *src, int size)
 
 int	catchmid(int *tab, int size)
 {
-	if (size % 2 == 0)
+	//if (size % 2 == 0)
 		return (tab[size / 2]);
-	else
-		return (tab[(size - 1) / 2]);
+/*	else
+		return (tab[(size - 1) / 2]);*/
 }
 
 int	find_min(int *x, int size)

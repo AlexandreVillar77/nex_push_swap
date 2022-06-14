@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:18 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/13 15:48:39 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/14 13:43:17 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int		ft_hereismore(int *tab, int max, int size)
 	return (0);
 }
 
-//modif rrb pas opti
-
 void	move_morethan(t_swap *swap, int mid)
 {
 	int	i;
@@ -39,7 +37,6 @@ void	move_morethan(t_swap *swap, int mid)
 	{
 		if (swap->b[0] > mid)
 		{
-			//ft_printf("b -> %d, mid = %d\n", swap->b[0], mid);
 			x++;
 			pa(swap);
 			swap->bchunk->size--;
@@ -50,7 +47,7 @@ void	move_morethan(t_swap *swap, int mid)
 			rb(swap);
 		}
 	}
-	while (i-- > 0 && swap->bsize > swap->bchunk->size && swap->bchunk->size > 0)
+	while (i-- > 0 && swap->bchunk->next && swap->bchunk->size > 0)
 				rrb(swap);
 	ft_update_chunk(swap->b, swap->bchunk);
 	new_achunk(swap, find_max(swap->a, x), x);
@@ -66,7 +63,7 @@ void	ft_size2(t_swap *swap)
 	else
 	{
 		if (swap->b[0] < swap->b[1] && swap->bchunk->size == 2)
-			sb(swap);
+			sa(swap);
 		pa(swap);
 		pa(swap);
 	}
@@ -76,11 +73,15 @@ void	ft_size2(t_swap *swap)
 
 void	chunk_pa(t_swap *swap)
 {
+	int	x;
+
+	x = swap->bchunk->size;
 	while (swap->bchunk->size > 0 && swap->bsize > 0)
 	{
 		pa(swap);
 		swap->bchunk->size--;
 	}
+	new_achunk(swap, find_max(swap->a, x), x);
 	ft_lstdel_first(&swap->bchunk);
 }
 

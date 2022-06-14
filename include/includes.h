@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:52:47 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 15:20:53 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:39:45 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void	ft_lstdel_first(t_chunk **alst);
 int	find_max(int *tab, int size);
 int	find_nearest(t_swap *swap, int max);
 int	ft_hereis(int *tab, int max, int size);
+void	ft_update_chunk(int *tab, t_chunk *chunk);
 
 //b_chunk.c
 int		ft_hereismore(int *tab, int max, int size);
@@ -133,5 +134,8 @@ void	move_lessthan2(t_swap *swap, int mid);
 void	chunk_pb(t_swap *swap);
 void	new_achunk(t_swap *swap, int max, int size);
 void	ft_size2a(t_swap *swap);
+
+//ft_opti_move.c
+void	s_to_ss(t_swap *swap, int num);
 
 #endif
