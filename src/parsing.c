@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:25:50 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 10:22:42 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:06:22 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	parse_nodup(t_swap *swap)
 
 int	check_max(char **str)
 {
-	int	i;
-	long long int m;
+	int				i;
+	long long int	m;
 
 	i = 0;
 	while (str[i])

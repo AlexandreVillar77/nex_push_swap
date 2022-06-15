@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:06:17 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/14 09:14:49 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:07:17 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,17 @@ int	*ft_numtabcpy(int *src, int size)
 	dst = malloc(sizeof(int) * size);
 	if (!dst)
 		return (0);
-	while (i < size && src[i])
+	while (i < size)
 	{
 		dst[i] = src[i];
 		i++;
 	}
-	//if (src)
-		//free(src);
 	return (dst);
 }
 
 int	catchmid(int *tab, int size)
 {
-	//if (size % 2 == 0)
-		return (tab[size / 2]);
-/*	else
-		return (tab[(size - 1) / 2]);*/
+	return (tab[size / 2]);
 }
 
 int	find_min(int *x, int size)
@@ -46,7 +41,7 @@ int	find_min(int *x, int size)
 
 	i = 0;
 	min = x[i];
-	while (i < size && x[i])
+	while (i < size)
 	{
 		if (min > x[i])
 			min = x[i];

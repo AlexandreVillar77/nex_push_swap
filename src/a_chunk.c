@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:08:40 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/14 13:43:35 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/14 16:21:45 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	move_lessthan(t_swap *swap, int mid)
 			ra(swap);
 		else
 			rra(swap);
-		
 	}
 	new_chunk(swap, find_max(swap->b, i), i);
 }
@@ -74,7 +73,8 @@ void	move_lessthan2(t_swap *swap, int mid)
 			ra(swap);
 		}
 	}
-	while (i-- > 0 && swap->asize > swap->achunk->size && swap->achunk->size > 0)
+	while (i-- > 0 && swap->asize > swap->achunk->size
+		&& swap->achunk->size > 0)
 		rra(swap);
 	ft_update_chunk(swap->a, swap->achunk);
 	new_chunk(swap, find_max(swap->b, x), x);

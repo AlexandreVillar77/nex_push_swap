@@ -6,13 +6,13 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:18 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/14 13:43:17 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/14 16:23:33 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/includes.h"
 
-int		ft_hereismore(int *tab, int max, int size)
+int	ft_hereismore(int *tab, int max, int size)
 {
 	int	i;
 
@@ -47,8 +47,9 @@ void	move_morethan(t_swap *swap, int mid)
 			rb(swap);
 		}
 	}
-	while (i-- > 0 && swap->bchunk->next && swap->bchunk->size > 0)
-				rrb(swap);
+	while (i-- > 0 && swap->bsize > swap->bchunk->size
+		&& swap->bchunk->size > 0)
+		rrb(swap);
 	ft_update_chunk(swap->b, swap->bchunk);
 	new_achunk(swap, find_max(swap->a, x), x);
 }
@@ -63,7 +64,7 @@ void	ft_size2(t_swap *swap)
 	else
 	{
 		if (swap->b[0] < swap->b[1] && swap->bchunk->size == 2)
-			sa(swap);
+			sb(swap);
 		pa(swap);
 		pa(swap);
 	}
@@ -89,13 +90,14 @@ int	f_sortb(t_swap *swap)
 {
 	int	*fact;
 	int	i;
-	int rtn;
+	int	rtn;
 
 	i = 0;
 	fact = ft_numtabcpy(swap->b, swap->bchunk->size);
 	if (!fact)
 		return (0);
-	while (i < swap->bchunk->size - 1 && is_sorted(fact, swap->bchunk->size) == 1)
+	while (i < swap->bchunk->size - 1
+		&& is_sorted(fact, swap->bchunk->size) == 1)
 	{
 		if (fact[i] > fact[i + 1])
 		{

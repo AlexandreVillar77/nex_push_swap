@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:04:55 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/13 13:43:42 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:01:11 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_max(int *tab, int size)
 
 	max = tab[0];
 	i = 0;
-	while (i < size && tab[i])
+	while (i < size)
 	{
 		if (max < tab[i])
 			max = tab[i];
@@ -42,7 +42,7 @@ int	find_nearest(t_swap *swap, int max)
 	while (i++ < swap->asize)
 		if (swap->a[i] < max)
 			near[1] = swap->asize - i;
-	if  (near[0] < near[1])
+	if (near[0] < near[1])
 	{
 		if (near[0] != 0 || (near[0] == 0 && swap->a[near[0]] < max))
 			return (0);
@@ -59,10 +59,13 @@ int	ft_hereis(int *tab, int max, int size)
 {
 	int	i;
 
-	i = -1;
-	while (++i < size && tab[i])
+	i = 0;
+	while (i < size)
+	{
 		if (tab[i] < max)
 			return (0);
+		i++;
+	}
 	return (1);
 }
 

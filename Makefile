@@ -6,7 +6,7 @@
 #    By: avillar <avillar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 12:50:52 by avillar           #+#    #+#              #
-#    Updated: 2022/06/14 13:40:27 by avillar          ###   ########.fr        #
+#    Updated: 2022/06/14 15:50:20 by avillar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS =		push_swap.c			\
 			b_chunk.c			\
 			a_chunk.c			\
 			ft_sort.c			\
-			ft_opti_move.c		\
+			ft_push.c			\
 
 CFLAG = -Wall -Wextra -Werror
 

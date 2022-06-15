@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:13:43 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/09 10:19:02 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:17:26 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_swap(t_swap *swap, int *a, int size)
 {
-	
 	swap->a = a;
 	swap->b = NULL;
 	swap->bsize = 0;
@@ -72,7 +71,7 @@ void	init_split(t_split *split, const char *s, char c)
 
 long int	ft_atoi(const char *str)
 {
-	long long int		rtn;
+	long int		rtn;
 	int				nb;
 
 	rtn = 0;

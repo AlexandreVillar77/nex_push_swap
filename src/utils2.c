@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:21:42 by avillar           #+#    #+#             */
-/*   Updated: 2022/06/13 10:31:43 by avillar          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:07:00 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*remalloc(int *src, int nsize, int bsize)
 	new = malloc(sizeof(int) * (nsize + 1));
 	if (!new)
 		return (new);
-	while (i < nsize && i < bsize && src[i])
+	while (i < nsize && i < bsize)
 	{
 		new[i] = src[i];
 		i++;
@@ -34,7 +34,7 @@ int	*remalloc(int *src, int nsize, int bsize)
 void	ft_swap(int	*a, int *b)
 {
 	int	s;
-	int s2;
+	int	s2;
 
 	s = *a;
 	s2 = *b;
